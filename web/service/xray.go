@@ -69,7 +69,7 @@ func (s *XrayService) GetXrayConfig() (*xray.Config, error) {
 	xrayConfig := &xray.Config{}
 	err = json.Unmarshal([]byte(templateConfig), xrayConfig)
 	if err != nil {
-		return nil, err
+		logger.Warning("unmarshal xray config failed:", err)
 	}
 
 	s.inboundService.AddTraffic(nil, nil)
